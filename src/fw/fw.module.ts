@@ -1,3 +1,4 @@
+import { ScreenService } from './services/screen.service';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FrameworkConfigService } from './services/framework-config.service';
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     TopBarComponent,
     StatusBarComponent
   ],
-  providers: [FrameworkConfigService]
+  providers: [FrameworkConfigService,
+  ScreenService]
   ,
   exports:[
     FrameworkBodyComponent
