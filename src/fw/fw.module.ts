@@ -1,3 +1,5 @@
+import { ScreenBelowLarge } from './directives/screen-below-large.directives';
+import { ScreenLarge } from './directives/screen-large.directive';
 import { ScreenService } from './services/screen.service';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
@@ -17,7 +19,9 @@ import { CommonModule } from '@angular/common';
     ContentComponent,
     TitleBarComponent,
     TopBarComponent,
-    StatusBarComponent
+    StatusBarComponent,
+    ScreenLarge,
+    ScreenBelowLarge
   ],
   providers: [FrameworkConfigService,
   ScreenService]
