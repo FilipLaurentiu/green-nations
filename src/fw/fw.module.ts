@@ -1,3 +1,6 @@
+import { MenuItemComponent } from './menus/menu-item/menu-item.component';
+import { MenuComponent } from './menus/menu/menu.component';
+import { MenuService, MenuItem } from './services/menu.service';
 import { ScreenBelowLarge } from './directives/screen-below-large.directives';
 import { ScreenLarge } from './directives/screen-large.directive';
 import { ScreenService } from './services/screen.service';
@@ -21,12 +24,15 @@ import { CommonModule } from '@angular/common';
     TopBarComponent,
     StatusBarComponent,
     ScreenLarge,
-    ScreenBelowLarge
+    ScreenBelowLarge,
+    MenuComponent,
+    MenuItemComponent
   ],
   providers: [FrameworkConfigService,
-  ScreenService]
+    ScreenService,
+    MenuService]
   ,
-  exports:[
+  exports: [
     FrameworkBodyComponent
   ]
 })
