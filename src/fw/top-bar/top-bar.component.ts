@@ -1,5 +1,6 @@
-import { FrameworkConfigService } from './../services/framework-config.service';
 import { Component, OnInit } from '@angular/core';
+
+import { FrameworkConfigService } from '../services/framework-config.service';
 
 @Component({
   selector: 'fw-top-bar',
