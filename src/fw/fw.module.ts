@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { MenuItemComponent } from './menus/menu-item/menu-item.component';
 import { MenuComponent } from './menus/menu/menu.component';
 import { MenuService, MenuItem } from './services/menu.service';
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     FrameworkBodyComponent,

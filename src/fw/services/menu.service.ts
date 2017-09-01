@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-export interface MenuItem{
+export interface MenuItem {
     text: string,
     icon: string,
     route: string,
