@@ -1,3 +1,4 @@
+
 :host {
     display: flex;
 }
@@ -9,13 +10,13 @@
 }
 
 .menu-area {
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: column; 
     flex-grow: 1;
     padding-right: 20px;
 }
 
-.title-bar-small{
+.title-bar-small {
     flex-grow: 1;
     display: flex;
     min-height: 56px;
@@ -25,7 +26,7 @@
     flex-grow: 1;
 }
 
-.small-image{
+.small-image {
     height: 50px;
 }
 
@@ -35,3 +36,7 @@ span {
     font-size: 25px;
     line-height: 50px;
 }
+
+
+
+
