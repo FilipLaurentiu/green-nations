@@ -19,7 +19,7 @@ import { MenuItemComponent } from './menus/menu-item/menu-item.component';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     FrameworkBodyComponent,

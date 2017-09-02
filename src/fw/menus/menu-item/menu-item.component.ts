@@ -1,15 +1,25 @@
-import {
-  Component, ElementRef, HostBinding, HostListener,
-  Input, OnInit, Renderer
-} from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer } from '@angular/core';
+
+import { trigger, state, style, transition, animate } from "@angular/animations";
+import { NavigationEnd, Router } from '@angular/router';
 
 import { MenuItem, MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'fw-menu-item',
   templateUrl: './menu-item.component.html',
-  styleUrls: ['./menu-item.component.css']
+  styleUrls: ['./menu-item.component.css'],
+  animations: [
+    trigger('visibilityChanged', [
+      transition(':enter', [   // :enter is alias to 'void => *'
+        style({ opacity: 0 }),
+        animate(500, style({ opacity: 1 }))
+      ]),
+      transition(':leave', [   // :leave is alias to '* => void'
+        animate(500, style({ opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class MenuItemComponent implements OnInit {
   @Input() item = <MenuItem>null;  // see angular-cli issue #2034
@@ -39,28 +49,35 @@ export class MenuItemComponent implements OnInit {
       .subscribe((event) => {
         if (event instanceof NavigationEnd) {
           this.checkActiveRoute(event.url);
-         // console.log(event.url + ' ' + this.item.route + ' ' + this.isActiveRoute);
+          //console.log(event.url + ' ' + this.item.route + ' ' + this.isActiveRoute);
         }
-      })
+      });
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event): void {
+
+    event.stopPropagation();
+
+    if (this.item.submenu) {
+      if (this.menuService.isVertical) {
+        this.mouseInPopup = !this.mouseInPopup;
+      }
+    }
+    else if (this.item.route) {
+      // force horizontal menus to close by sending a mouseleave event
+      let newEvent = new MouseEvent('mouseleave', { bubbles: true });
+      this.renderer.invokeElementMethod(
+        this.el.nativeElement, 'dispatchEvent', [newEvent]);
+
+      this.router.navigate(['/' + this.item.route]);
+
+    }
   }
 
   onPopupMouseEnter(event): void {
     if (!this.menuService.isVertical) {
       this.mouseInPopup = true;
-    }
-  }
-  @HostListener('click', ['$event'])
-  onClick(event): void {
-    event.stopPropagation();
-    if (this.item.submenu) {
-      if (this.menuService.isVertical) {
-        this.mouseInPopup = !this.mouseInPopup;
-      }
-    } else if (this.item.route) {
-      let newEvent = new MouseEvent('mouseleave', { bubbles: true });
-      this.renderer.invokeElementMethod(
-        this.el.nativeElement, 'dispatchEvent', [newEvent]);
-      this.router.navigate(['/' + this.item.route]);
     }
   }
 
