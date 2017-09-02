@@ -1,3 +1,6 @@
+import { RegisterUserComponent } from './users/register-user/register-user.component';
+import { FormsModule } from '@angular/forms';
+import { SignInComponent } from './users/sign-in/sign-in.component';
 import { PopupMenuComponent } from './menus/popup-menu/popup-menu.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +23,7 @@ import { MenuItemComponent } from './menus/menu-item/menu-item.component';
   imports: [
     CommonModule,
     RouterModule,
+    FormsModule
   ],
   declarations: [
     FrameworkBodyComponent,
@@ -31,7 +35,9 @@ import { MenuItemComponent } from './menus/menu-item/menu-item.component';
     ScreenBelowLarge,
     MenuComponent,
     MenuItemComponent,
-    PopupMenuComponent
+    PopupMenuComponent,
+    SignInComponent,
+    RegisterUserComponent
   ],
   providers: [
     FrameworkConfigService,

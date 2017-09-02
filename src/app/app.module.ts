@@ -1,3 +1,5 @@
+import { UserApi } from '../fw/users/user-api';
+import { UserService } from './services/user.services';
 import { CountryMaintComponent } from './country-maint/country-maint.component';
 import { CountryListComponent } from './country-list/country-list.component';
 import { CountryDetailComponent } from './country-detail/country-detail.component';
@@ -13,6 +15,7 @@ import { FwModule } from '../fw/fw.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SettingsComponent } from './settings/settings.component';
 import { appRoutes } from './app.routing';
+import { AuthenticatedUserComponent } from './authenticated-user/authenticated-user.component';
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import { appRoutes } from './app.routing';
     CountryDetailComponent,
     CountryListComponent,
     CountryMaintComponent,
+    AuthenticatedUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,10 @@ import { appRoutes } from './app.routing';
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    { provide: UserApi, useExisting: UserService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
