@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth-guard.service';
 import { UserApi } from '../fw/users/user-api';
 import { UserService } from './services/user.services';
 import { CountryMaintComponent } from './country-maint/country-maint.component';
@@ -38,7 +39,8 @@ import { AuthenticatedUserComponent } from './authenticated-user/authenticated-u
   ],
   providers: [
     UserService,
-    { provide: UserApi, useExisting: UserService }
+    { provide: UserApi, useExisting: UserService },
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
